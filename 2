@@ -1,0 +1,37 @@
+# включить  < iostream >
+# включить  < хроно >
+
+интервал  основной () {
+	интервал п {};
+	интервал против {};
+	интервал наоборот{};
+	std::cin >> п;
+	int * A = новый  int [n];
+
+	для ( int i = 0 ; i < n; i++)
+		A[i] = std::rand ();
+
+	инт д = п / 2 ;
+	auto start_time = std::chrono::steady_clock::now ();
+	в то время как (d > 0 ) {
+		for ( int i = 0 ; i < n - d ; i ++) {
+			интервал j = я;
+			в то время как (j >= 0 && A[j] > A[j + d]) {
+				против++;
+				std::swap (A[j], A[j + d]);
+				реверс++;
+				ж--;
+
+			}
+			против++;
+		}
+		д/= 2 ;
+	}
+
+	auto end_time = std::chrono::steady_clock::now ();
+	auto work_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+	std::cout << " vs = " << vs << std::endl;
+	std::cout << " reverse = " << reverse << std::endl;
+	std::cout << " реверс + vs = " << реверс + vs << std::endl;
+	std::cout << " время (миллисекунды): " << рабочее_время. количество () << std::endl;
+}
