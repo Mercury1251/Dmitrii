@@ -1,0 +1,59 @@
+#include <лимиты.h>
+#include <string.h>
+#include <stdio.h>
+#include <fstream>
+#include <иопоток>
+# определить NO_OF_CHARS 256
+использование пространства имен std;
+интервал макс (интервал а, интервал б)
+{
+	вернуть (а > б)? а: б;
+}
+void badCharHeuristic (char* str, int size, int badchar[NO_OF_CHARS])
+{
+	инт я;
+	для (я = 0; я < NO_OF_CHARS; я ++)
+		бадчар [я] = -1;
+	для (я = 0; я < размер; я ++)
+		badchar[(int)str[i]] = i;
+}
+недействительный поиск (char * txt, char * pat)
+{
+	int m = strlen(pat);
+	int n = strlen(txt);
+	int badchar[NO_OF_CHARS];
+	badCharHeuristic(pat, m, badchar);
+	инт с = 0;
+	в то время как (s <= (n - m))
+	{
+		инт j = м - 1;
+		в то время как (j >= 0 && pat[j] == txt[s + j])
+			ж--;
+		если (j < 0)
+		{
+			printf("\nШаблон возникает на смене #%d", s);
+			s += (s + m < n) ? m - badchar[txt[s + m]] : 1;
+		}
+		еще
+			s += max(1, j - badchar[txt[s + j]]);
+	}
+}
+основной ()
+{
+	файл ifstream("textfortask6.txt");
+	если (файл)
+	{
+		файл.seekg(0, файл.конец);
+		целая длина = файл.tellg();
+		файл.seekg(0, файл.beg);
+		char* quote = новый char[длина];
+		file.get(цитата, длина, '*');
+		char pat[] = "Атлантический ураган";
+		поиск(цитата, погладить);
+	}
+	еще
+	{
+		cout << "файл не может быть открыт\n";
+	}
+	вернуть 0;
+}
