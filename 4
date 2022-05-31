@@ -1,0 +1,26 @@
+#include "hw4.h"
+#include "Массивы.h"
+
+HW4::HW4(длинный интервал) {
+	это-> лен = лен;
+	обр = Arrays::create(len);
+// Массивы::quickSort(arr, 0, len, '<');
+	Arrays::display(arr, len);
+}
+
+пустота HW4::search() {
+	внутренний ключ;
+	cin >> ключ;
+	автозапуск = chrono::system_clock::now();
+	for (int i = 0; i<len; i++){
+		сф++;
+		если (arr[i] == ключ) {
+			cout << arr[i] << " имеет индекс " << i << endl;
+			ломать;
+		}
+	}
+	auto end = chrono::system_clock::now();
+	chrono::duration<double, милли> elapsed_seconds = конец - начало;
+	cout << "рабочее время: " << elapsed_seconds.count() << "мс" << endl;
+	cout << "sf: " << sf + mf << endl;
+}
