@@ -1,0 +1,29 @@
+#include "hw1.h"
+
+HW1::HW1() {
+    cout << "введите длину массива" << endl;
+    цин >> лен;
+    бежать();
+}
+
+пустота HW1::run() {
+    автозапуск = chrono::system_clock::now();
+    srand(время(0));
+    for (int i = 0; i < len; i++) {
+        int a = 1 + rand() % 100;
+        vec.push_back(а);
+    }
+    for (int i = 0; i < len - 1; i++) {
+        for (int j = i + 1; j < len; j++) {
+            это->sf++;
+            если (vec[i] > vec[j]) {
+                это->мф++;
+                своп(век[i],век[j]);
+            }
+        }
+    }
+    auto end = chrono::system_clock::now();
+    chrono::duration<double, милли> elapsed_seconds = конец - начало;
+    cout << "рабочее время: " << elapsed_seconds.count() << "мс" << endl;
+    cout << "sf + mf: " << sf + mf << endl;
+}
