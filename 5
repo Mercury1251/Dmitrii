@@ -1,0 +1,89 @@
+# включить  < Bits.h >
+# включить  < строка >
+# включить  < iostream >
+# включить  < fstream >
+
+используя  пространство имен  std ;
+
+const  int SIZE_ARRAY = 100100 ;
+const  int BASE = 2017 ;
+const  int MOD = 10000000007 ;
+
+INT64 hash_text[SIZE_ARRAY];
+INT64 hash_string[SIZE_ARRAY];
+мощность INT64[SIZE_ARRAY];
+
+void  init_hash ( const string& data, INT64 *hash, int base, int mod)
+{
+	хэш[ 0 ] = 0 ;
+	INT64 text_length = данные. длина ();
+
+	for ( int i = 1 ; i < text_length ; i++)
+	{
+		hash[i] = (hash[i- 1 ] * base% mod) + (( signed  char )data[i - 1 ]% mod);
+	}
+}
+недействительным  clear_hash (INT64 *хеш)
+{
+	для ( int я = 0 ; я < SIZE_ARRAY ; я ++)
+	{
+		хэш[i] = NULL ;
+	}
+}
+
+void  init_power (INT64 *power, int base, int mod)
+{
+	мощность [ 0 ] = 1 ;
+
+	для ( int я = 1 ; я < SIZE_ARRAY; ++ я)
+	{
+		мощность [i] = мощность [i - 1 ] * базовый % mod;
+	}
+}
+
+INT64 get_hash ( int size_of_text, INT64* hash, INT64* power, int mod)
+{
+	возврат (хеш[размер_текста - 1 ]);
+}
+
+основной  ( )
+{
+файл 	ifstream ( " Text.txt " );
+	строковый текст;
+	строка string_that_find;
+	если ( файл.is_open ())
+	{
+		в то время как (! файл. eof ())
+		{
+			темп строки;
+			getline (файл, временный файл);
+
+			текст += темп;
+		}
+	}
+	файл. закрыть ();
+	getline (cin, string_that_find);
+
+	init_power (мощность, БАЗОВАЯ, МОД);
+	init_hash (string_that_find, hash_string, BASE, MOD);
+	INT64 длина_текста = текст. размер ();
+	интервал_итератор = 0 ;
+	пока ( правда )
+	{
+		init_hash (текст, hash_text, BASE, MOD);
+
+		if ( get_hash ( text.size ()- 1 ,hash_text,power,MOD) == get_hash (string_that_find.size ()- 1 , hash_string ,power,MOD))
+		{
+			cout << " НАЙТИ " << endl;
+			cout << " vs = " << _iterator;
+			перерыв ;
+		}
+		if (_iterator == text.size ( ) - 1 ) { cout << " НЕ НАЙТИ " ; перерыв ; };
+
+		текст. стереть ( 0 , 1 );
+		clear_hash (хэш_текст);
+		_итератор++;
+	}
+	
+	вернуть  0 ;
+}
